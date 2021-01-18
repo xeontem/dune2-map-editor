@@ -1,6 +1,9 @@
-img {
-    box-sizing: border-box;
-    width: 32px;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .row {
@@ -8,5 +11,6 @@ img {
 }
 
 .selected {
-    border: 2px solid green;
+    outline: 2px solid green;
+    z-index: 0;
 }
