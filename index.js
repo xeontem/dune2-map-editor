@@ -36,18 +36,16 @@ function parseTerrain(rawTerrain, width) {
     var parsedTerrainMatrix = [];
 
     var currentRow = [];
-    var x = 0;
+    var x = 1;
     
     rawTerrain.forEach(spriteName => {
-        x++;
         currentRow.push(spriteName);
-        if (x === (width - 1)) {
+        if (x === width) {
             parsedTerrainMatrix.push(currentRow);
-        }
-    
-        if (x == width) {
-            x = 0;
+            x = 1;
             currentRow = [];
+        } else {
+            x++;
         }
     });
     return parsedTerrainMatrix;
