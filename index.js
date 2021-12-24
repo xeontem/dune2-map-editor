@@ -21,7 +21,7 @@ function renderTerrain(matrix, listener) {
         var rowDiv = document.createElement('DIV');
         rowDiv.classList.add('row');
     
-        row.forEach(spriteName => {
+        row.match(/.{1,2}/g).forEach(spriteName => {
             var imgEl = document.createElement('IMG');
             imgEl.src = "terrain/" + spriteName + ".png";
             imgEl.addEventListener("click", listener);
@@ -32,23 +32,4 @@ function renderTerrain(matrix, listener) {
     });
 }
 
-function parseTerrain(rawTerrain, width) {
-    var parsedTerrainMatrix = [];
-
-    var currentRow = [];
-    var x = 1;
-    
-    rawTerrain.forEach(spriteName => {
-        currentRow.push(spriteName);
-        if (x === width) {
-            parsedTerrainMatrix.push(currentRow);
-            x = 1;
-            currentRow = [];
-        } else {
-            x++;
-        }
-    });
-    return parsedTerrainMatrix;
-}
-
-renderTerrain(parseTerrain(map0.terrainMatrix, map0.terrainWidth), getImageClickListener());
+renderTerrain(map, getImageClickListener());
